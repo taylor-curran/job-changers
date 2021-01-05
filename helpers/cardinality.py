@@ -15,7 +15,7 @@ def rank_cardinality(df):
         List of df column names from lowest cardinality to highest cardinality.
     """
 
-    cat_columns = df.describe(exclude='number').columns
+    cat_columns = df.select_dtypes(exclude='number')
     perc_unique = {}
     for col in cat_columns:
         pu = df[col].nunique() / df.shape[0]
